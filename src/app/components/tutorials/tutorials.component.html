@@ -1,0 +1,55 @@
+<div class="sort-header">
+  <h2>Tutoriels :</h2>
+  <mat-form-field>
+    <mat-label>Tri :</mat-label>
+    <mat-select [(value)]="sortByDate">
+      <mat-option value="DESC">Plus récents</mat-option>
+      <mat-option value="ASC">Plus anciens</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<ng-container class="tutorial-container" *ngIf="tutorials$ | async as tutorials; else noTutorials" appHoverHighlight>
+  <mat-card *ngFor="let tuto of tutorials | sortTutorialByDate:sortByDate">
+    <mat-card-header>
+      <mat-card-title>{{tuto.title}}</mat-card-title>
+      <mat-card-subtitle>{{tuto.description}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      {{tuto.content}}
+    </mat-card-content>
+
+    <mat-card-content>
+      <mat-chip-listbox aria-label="">
+        <mat-chip>{{tuto.author.firstName}} {{tuto.author.lastName | uppercase}}</mat-chip>
+        <mat-chip>{{tuto.author.email}}</mat-chip>
+      </mat-chip-listbox>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-actions class="tutorial-container informations">
+      <mat-card-subtitle>En ligne depuis le {{tuto.createdDate | date: 'fullDate'}}</mat-card-subtitle>
+      <div>
+        <button mat-raised-button color="primary">
+          <mat-icon>visibility</mat-icon>
+          Details
+        </button>
+        <button mat-raised-button color="secondary">
+          <mat-icon>share</mat-icon>
+          Partager
+        </button>
+      </div>
+    </mat-card-actions>
+
+    <app-comments [comments]="tuto.comments"></app-comments>
+  </mat-card>
+</ng-container>
+
+<ng-template #noTutorials>
+  <div class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
+

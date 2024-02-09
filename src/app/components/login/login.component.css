@@ -1,0 +1,12 @@
+.login{
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+
+}
+button{
+  width:150px;
+}
+
+

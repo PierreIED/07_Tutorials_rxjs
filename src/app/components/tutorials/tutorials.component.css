@@ -1,0 +1,28 @@
+mat-card {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.mat-card-content {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+mat-chip {
+  margin-top: 10px;
+}
+
+.tutorial-container.informations {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 30px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.sort-header {
+  display: flex;
+  justify-content: space-between;
+}

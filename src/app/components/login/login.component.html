@@ -1,0 +1,16 @@
+
+<div class="login">
+
+  <mat-form-field appearance="outline">
+
+    <input matInput placeholder="Nom" style="border:solid" [formControl]="username">
+
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <input matInput type="password" placeholder="Mot de passe" [formControl]="password">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="login() "> Se Connecter</button>
+</div>
+
+
+

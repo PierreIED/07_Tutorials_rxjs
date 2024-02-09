@@ -1,0 +1,17 @@
+<mat-card-footer class="footer">
+  <div>
+    <button
+      (click)="showComments()" [disabled]="comments.length < 1"
+      mat-raised-button color="primary"
+      [matBadgeHidden]="comments.length < 1"
+      [matBadge]="comments.length" matBadgePosition="before" matBadgeColor="accent">
+      Commentaires
+    </button>
+  </div>
+
+  <div *ngIf="collapseComments">
+    <mat-list role="list">
+      <mat-list-item *ngFor="let c of comments">{{c.content}}</mat-list-item>
+    </mat-list>
+  </div>
+</mat-card-footer>
