@@ -2,15 +2,14 @@
 <div class="login-container">
   <div class="login-content">
     <mat-toolbar class="login-toolbar" color="primary">REGISTER</mat-toolbar>
-    <mat-card>
+    <mat-card class="login-card">
 
       <form [formGroup]="registerForm" #formDirective="ngForm"
             (ngSubmit)="onSubmit(registerForm, formDirective)">
 
 
         <mat-form-field>
-          <mat-icon matPrefix>person_outline</mat-icon>
-          <input autofocus type="text" matInput placeholder="Username *" formControlName="username">
+          <input autofocus type="text" matInput placeholder="Username " formControlName="username" value="">
         </mat-form-field>
 
 
@@ -22,7 +21,7 @@
 
         <mat-form-field>
           <mat-icon matPrefix>lock_outline</mat-icon>
-          <input type="password" autocomplete="false" matInput placeholder="Password *" formControlName="password">
+          <input type="password" autocomplete="false" matInput placeholder="Password *" formControlName="password2" >
           <mat-hint>Repeat your password </mat-hint>
         </mat-form-field>
 

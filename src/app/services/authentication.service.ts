@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class AuthenticationService {
-
+  response: string="";
   constructor(private http: HttpClient, @Inject(BASE_API_URL) private baseUrl: string ) { }
 
 
@@ -29,7 +29,15 @@ export class AuthenticationService {
     return JSON.parse(localStorage.getItem('token')!)['access_token']
   }
 
-  registerUSer(password: any, username: any) {
-    
+  registerUSer(password: string, username: string) :void{
+    // send request for registering
+   this.http.post<any>(this.baseUrl+'/Members', {"username": username, "password":password})
+      .subscribe(r => this.response = JSON.stringify(r));
+
+   // in case of positive request : set created token as logged in
+    if (this.response != ""){
+      localStorage.setItem('token', JSON.parse(this.response)['access_token']);
+    }
+
   }
 }
